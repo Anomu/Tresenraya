@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.PrimaryController">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem fx:id="theme" mnemonicParsing="false" onAction="#changeTheme" text="Change theme to dark" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <SplitPane dividerPositions="0.717391304347826" prefHeight="390.0" prefWidth="600.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Button fx:id="btn00" layoutX="78.0" layoutY="20.0" mnemonicParsing="false" onAction="#click" prefHeight="90.0" prefWidth="90.0" text="X">
+                     <font>
+                        <Font size="38.0" />
+                     </font></Button>
+                  <Button fx:id="btn01" layoutX="168.0" layoutY="20.0" mnemonicParsing="false" onAction="#click" prefHeight="90.0" prefWidth="90.0" text="O">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btn02" layoutX="258.0" layoutY="20.0" mnemonicParsing="false" onAction="#click" prefHeight="90.0" prefWidth="90.0" text="X">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btn10" layoutX="78.0" layoutY="110.0" mnemonicParsing="false" onAction="#click" prefHeight="90.0" prefWidth="90.0" text="O">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btn11" layoutX="168.0" layoutY="110.0" mnemonicParsing="false" onAction="#click" prefHeight="90.0" prefWidth="90.0" text="X">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btn12" layoutX="258.0" layoutY="110.0" mnemonicParsing="false" onAction="#click" prefHeight="90.0" prefWidth="90.0" text="O">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btn20" layoutX="78.0" layoutY="200.0" mnemonicParsing="false" onAction="#click" prefHeight="90.0" prefWidth="90.0" text="X">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btn21" layoutX="168.0" layoutY="200.0" mnemonicParsing="false" onAction="#click" prefHeight="90.0" prefWidth="90.0" text="O">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btn22" layoutX="258.0" layoutY="200.0" mnemonicParsing="false" onAction="#click" prefHeight="90.0" prefWidth="90.0" text="X">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="text" layoutX="77.0" layoutY="301.0" prefHeight="58.0" prefWidth="272.0" style="-fx-border-color: grey; -fx-border-width: 5; -fx-border-style: solid; -fx-alignment: center;" text="Play!" textAlignment="CENTER" />
+               </children></AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <RadioButton fx:id="pvp" layoutX="63.0" layoutY="44.0" mnemonicParsing="false" onAction="#selectPvP" text="PvP" />
+                  <RadioButton fx:id="pve" layoutX="63.0" layoutY="69.0" mnemonicParsing="false" onAction="#selectPvE" text="PvE" />
+                  <RadioButton fx:id="eve" layoutX="63.0" layoutY="94.0" mnemonicParsing="false" onAction="#selectEvE" text="EvE" />
+                  <Button fx:id="btnStart" layoutX="31.0" layoutY="164.0" mnemonicParsing="false" onAction="#clickStart" prefHeight="45.0" prefWidth="104.0" style="-fx-" text="Start" />
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</VBox>
