@@ -248,6 +248,8 @@ public class PrimaryController {
     @FXML
     private void clickStart() throws IOException {
         resetGameButtons();
+        text.setText("");
+        grid= new int[3][3];
         playing = true;
         btnStart.setDisable(true);
     }
