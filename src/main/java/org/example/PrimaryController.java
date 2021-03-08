@@ -13,7 +13,6 @@ import static org.example.App.scene;
 
 public class PrimaryController {
 
-
     //btn+nº -> game buttons, btnStart start the game button
     @FXML private Button btn00,btn01,btn02,btn10,btn11,btn12,btn20,btn21,btn22, btnStart;
 
@@ -31,8 +30,7 @@ public class PrimaryController {
     boolean playing = false;
     int grid[][] = new int[3][3];
 
-
-
+    //Change the theme from light to dark.
     @FXML
     private void changeTheme() throws IOException {
 
@@ -55,6 +53,7 @@ public class PrimaryController {
 
     }
 
+    //Game buttons click function.
     @FXML
     private void click(ActionEvent event) throws IOException {
 
@@ -101,6 +100,7 @@ public class PrimaryController {
 
     }
 
+    //Resets the text inside the game buttons.
     private void resetGameButtons(){
 
         btn00.setText("");btn01.setText("");btn02.setText("");
@@ -108,11 +108,11 @@ public class PrimaryController {
         btn20.setText("");btn21.setText("");btn22.setText("");
 
     }
-    
+
+    //Detects if the game buttons are all full.
     private boolean fullGrid (int[][] grid){
         
         boolean full = true;
-       // int fullSpaces = 0;
 
         for (int i = 0; i < 3; i++) {
 
@@ -120,20 +120,16 @@ public class PrimaryController {
 
                 if(grid[i][j] == 0){
 
-                   // fullSpaces++;
                     full = false;
 
                 }
             }
         }
-        /*
-        if (fullSpaces == 9){
-            full = true;
-        }
-         */
+
         return full;
     }
 
+    //Gets the position of the clicked game button.
     private int[] getingCoord(String btnName){
 
         int[] coord = {0,0};
@@ -189,6 +185,7 @@ public class PrimaryController {
 
     }
 
+    //Changes turns
     private void changeTurn() {
 
         if (player == 1) {
@@ -203,6 +200,7 @@ public class PrimaryController {
 
     }
 
+    //Gets the player that won the game.
     private int getWinner(int[][] grid) {
 
         int winner = 0;
@@ -249,6 +247,7 @@ public class PrimaryController {
 
     }
 
+    //Announces the player that won the game.
     private boolean announceWinner (int player) {
 
         boolean decidedWinner = false;
@@ -275,6 +274,7 @@ public class PrimaryController {
         return decidedWinner;
     }
 
+    //Radio button method that selects player versus player mode.
     @FXML
     private void selectPvP() throws IOException {
 
@@ -284,6 +284,7 @@ public class PrimaryController {
 
     }
 
+    //Radio button method that selects player versus machine mode.
     @FXML
     private void selectPvE() throws IOException {
 
@@ -293,6 +294,7 @@ public class PrimaryController {
 
     }
 
+    //Radio button method that selects machine versus machine mode.
     @FXML
     private void selectEvE() throws IOException {
 
@@ -301,6 +303,7 @@ public class PrimaryController {
         pve.setDisable(true);
 
     }
+
 
     @FXML
     private void clickStart() throws IOException {
