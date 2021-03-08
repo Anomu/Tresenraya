@@ -74,7 +74,12 @@ public class PrimaryController {
 
                 }
 
-                changeTurn();
+
+                    if(announceWinner(player) == true){
+                        playing = false;
+                    }else {
+                        changeTurn();
+                    }
 
             } else {
                 text.setText("Already taken!");
@@ -90,6 +95,26 @@ public class PrimaryController {
         btn10.setText("");btn11.setText("");btn12.setText("");
         btn20.setText("");btn21.setText("");btn22.setText("");
 
+    }
+    
+    private boolean fullGrid (int[][] grid){
+        
+        boolean full = true;
+       // int fullSpaces = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if(grid[i][j] == 0){
+                   // fullSpaces++;
+                    full = false;
+                }
+            }
+        }
+        /*
+        if (fullSpaces == 9){
+            full = true;
+        }
+         */
+        return full;
     }
 
     private int[] getingCoord(String btnName){
@@ -139,27 +164,70 @@ public class PrimaryController {
 
     }
 
-    private int announceWinner(int[][] grid) {
+    private int getWinner(int[][] grid) {
+
         int winner = 0;
 
-        if (grid [0][0] != 0 && grid [0][1] == grid [0][0] && grid [0][2] == grid [0][0]){
+        if (grid [0][0] != 0 && grid [0][1] == grid [0][0] && grid [0][2] == grid [0][0]) {
 
-        } else if(grid [1][0] != 0 && grid [1][1] == grid [1][0] && grid [1][2] == grid [1][0]){
+            winner = grid [0][0];
 
-        }else if(grid [2][0] != 0 && grid [2][1] == grid [2][0] && grid [2][2] == grid [2][0]){
+        } else if(grid [1][0] != 0 && grid [1][1] == grid [1][0] && grid [1][2] == grid [1][0]) {
 
-        }else if(grid [0][0] != 0 && grid [1][0] == grid [0][0] && grid [2][0] == grid [0][0]){
+            winner = grid [1][0];
 
-        }else if(grid [0][1] != 0 && grid [1][1] == grid [0][0] && grid [2][1] == grid [0][1]){
+        } else if(grid [2][0] != 0 && grid [2][1] == grid [2][0] && grid [2][2] == grid [2][0]) {
 
-        }else if(grid [0][2] != 0 && grid [1][2] == grid [0][2] && grid [2][2] == grid [0][2]){
+            winner = grid [2][0];
 
-        }else if(grid [0][0] != 0 && grid [1][1] == grid [0][0] && grid [2][2] == grid [0][0]){
+        } else if(grid [0][0] != 0 && grid [1][0] == grid [0][0] && grid [2][0] == grid [0][0]) {
 
-        }else if(grid [0][2] != 0 && grid [1][1] == grid [0][2] && grid [2][0] == grid [0][2]){
-            System.out.println("lololo");
+            winner = grid [0][0];
+
+        } else if(grid [0][1] != 0 && grid [1][1] == grid [0][0] && grid [2][1] == grid [0][1]) {
+
+            winner = grid [0][1];
+
+        } else if(grid [0][2] != 0 && grid [1][2] == grid [0][2] && grid [2][2] == grid [0][2]) {
+
+            winner = grid [0][2];
+
+        } else if(grid [0][0] != 0 && grid [1][1] == grid [0][0] && grid [2][2] == grid [0][0]) {
+
+            winner = grid [0][0];
+
+        } else if(grid [0][2] != 0 && grid [1][1] == grid [0][2] && grid [2][0] == grid [0][2]) {
+
+            winner = grid [0][2];
+
+        } else if (fullGrid(grid) == true) {
+
+            winner = 3;
+
         }
+
         return winner;
+
+    }
+
+    private boolean announceWinner (int player) {
+
+        boolean decidedWinner = false;
+
+        btnStart.setDisable(false);
+
+        if (getWinner(grid) == 1){
+            text.setText("X player is the winner!");
+            decidedWinner = true;
+        } else if (getWinner(grid) == 2){
+            text.setText("O player is the winner!");
+            decidedWinner = true;
+        } else if (getWinner(grid) == 3){
+            text.setText("It's a draw!");
+            decidedWinner = true;
+        }
+
+        return decidedWinner;
     }
 
     @FXML
@@ -181,6 +249,7 @@ public class PrimaryController {
     private void clickStart() throws IOException {
         resetGameButtons();
         playing = true;
+        btnStart.setDisable(true);
     }
 
 }
