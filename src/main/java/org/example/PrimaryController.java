@@ -26,6 +26,7 @@ public class PrimaryController {
     //shows announcements
     @FXML private Label text;
 
+    int mode = 0;
     int player = 1;
     boolean playing = false;
     int grid[][] = new int[3][3];
@@ -37,13 +38,19 @@ public class PrimaryController {
 
             String mode;
             scene.getStylesheets().clear();
-            if(theme.getText().equals("Change theme to dark")) {
+
+            if (theme.getText().equals("Change theme to dark")) {
+
                 scene.getStylesheets().add("night.css");
                 mode = "Change theme to light";
-            }else {
+
+            } else {
+
                 scene.getStylesheets().clear();
                 mode = "Change theme to dark";
+
             }
+
             theme.setText(mode);
 
     }
@@ -74,15 +81,20 @@ public class PrimaryController {
 
                 }
 
+                    if (announceWinner(player) == true) {
 
-                    if(announceWinner(player) == true){
                         playing = false;
-                    }else {
+
+                    } else {
+
                         changeTurn();
+
                     }
 
             } else {
+
                 text.setText("Already taken!");
+
             }
 
         }
@@ -101,11 +113,16 @@ public class PrimaryController {
         
         boolean full = true;
        // int fullSpaces = 0;
+
         for (int i = 0; i < 3; i++) {
+
             for (int j = 0; j < 3; j++) {
+
                 if(grid[i][j] == 0){
+
                    // fullSpaces++;
                     full = false;
+
                 }
             }
         }
@@ -121,45 +138,67 @@ public class PrimaryController {
 
         int[] coord = {0,0};
 
-        if (btnName.equals("btn00")){
+        if (btnName.equals("btn00")) {
+
             coord[0]=0;
             coord[1]=0;
+
         } else if (btnName.equals("btn01")){
+
             coord[0]=0;
             coord[1]=1;
-        } else if (btnName.equals("btn02")){
+
+        } else if (btnName.equals("btn02")) {
+
             coord[0]=0;
             coord[1]=2;
-        } else if (btnName.equals("btn10")){
+
+        } else if (btnName.equals("btn10")) {
+
             coord[0]=1;
             coord[1]=0;
-        } else if (btnName.equals("btn11")){
+
+        } else if (btnName.equals("btn11")) {
+
             coord[0]=1;
             coord[1]=1;
-        } else if (btnName.equals("btn12")){
+
+        } else if (btnName.equals("btn12")) {
+
             coord[0]=1;
             coord[1]=2;
-        } else if (btnName.equals("btn20")){
+
+        } else if (btnName.equals("btn20")) {
+
             coord[0]=2;
             coord[1]=0;
-        } else if (btnName.equals("btn21")){
+
+        } else if (btnName.equals("btn21")) {
+
             coord[0]=2;
             coord[1]=1;
-        } else if (btnName.equals("btn22")){
+
+        } else if (btnName.equals("btn22")) {
+
             coord[0]=2;
             coord[1]=2;
+
         }
 
         return coord;
 
     }
 
-    private void changeTurn(){
+    private void changeTurn() {
 
-        if (player == 1){
+        if (player == 1) {
+
             player = 2;
-        } else if (player == 2){
+
+        } else if (player == 2) {
+
             player = 1;
+
         }
 
     }
@@ -216,15 +255,21 @@ public class PrimaryController {
 
         btnStart.setDisable(false);
 
-        if (getWinner(grid) == 1){
+        if (getWinner(grid) == 1) {
+
             text.setText("X player is the winner!");
             decidedWinner = true;
-        } else if (getWinner(grid) == 2){
+
+        } else if (getWinner(grid) == 2) {
+
             text.setText("O player is the winner!");
             decidedWinner = true;
-        } else if (getWinner(grid) == 3){
+
+        } else if (getWinner(grid) == 3) {
+
             text.setText("It's a draw!");
             decidedWinner = true;
+
         }
 
         return decidedWinner;
@@ -233,25 +278,39 @@ public class PrimaryController {
     @FXML
     private void selectPvP() throws IOException {
 
+        mode = 1;
+        pve.setDisable(true);
+        eve.setDisable(true);
+
     }
 
     @FXML
     private void selectPvE() throws IOException {
+
+        mode = 2;
+        pvp.setDisable(true);
+        eve.setDisable(true);
 
     }
 
     @FXML
     private void selectEvE() throws IOException {
 
+        mode = 3;
+        pvp.setDisable(true);
+        pve.setDisable(true);
+
     }
 
     @FXML
     private void clickStart() throws IOException {
+
         resetGameButtons();
         text.setText("");
         grid= new int[3][3];
         playing = true;
         btnStart.setDisable(true);
+
     }
 
 }
